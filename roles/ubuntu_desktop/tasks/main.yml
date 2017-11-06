@@ -6,3 +6,11 @@
     - "Hello,"
     - "World"
 
+- name: Install packages
+  yum:
+    name: "{{ item }}"
+    state: absent
+  with_items:
+    - nginx
+    - httpd
+    - rkhunter
