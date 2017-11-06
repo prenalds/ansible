@@ -1,0 +1,8 @@
+---
+
+- name: Hello, World!
+  command: "echo {{ item }}"
+  with_items:
+    - "Hello,"
+    - "World"
+

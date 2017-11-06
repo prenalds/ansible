@@ -1,0 +1,9 @@
+---
+
+- name: Harden Ubuntu Desktop Servers
+  hosts: local
+  connection: local
+  roles:
+    - ubuntu_desktop
+  become: yes
+  become_user: root
