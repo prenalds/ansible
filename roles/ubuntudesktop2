@@ -2,8 +2,8 @@
  
  -name: install packages
   apt:
-   name:"{{item}}"
-   state: latest
+    name:"{{item}}"
+    state: latest
    with_items:
    -rkhunter
    -clamAV
@@ -19,11 +19,19 @@
    log: yes
    
   -ufw:
-   rule: limit
-   port: ssh
+    rule: limit
+    port: ssh
+    proto: tcp
+    log: yes
   
   -ufw:
-   rule: limit
-   port: sshd
-   
+    rule: limit
+    port: sshd
+    proto:tcp
+    log: yes
+    
+  
   -
+
+   
+  
