@@ -1,1 +1,29 @@
-
+ ---
+ 
+ -name: install packages
+  apt:
+   name:"{{item}}"
+   state: latest
+   with_items:
+   -rkhunter
+   -clamAV
+   -clamTK
+   
+ -ufw:
+   state: enabled
+   policy: allow
+ 
+ -ufw:
+   rule: reject
+   port: telnet
+   log: yes
+   
+  -ufw:
+   rule: limit
+   port: ssh
+  
+  -ufw:
+   rule: limit
+   port: sshd
+   
+  -
