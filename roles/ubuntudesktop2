@@ -38,6 +38,14 @@
    ssh_key_type: rsa
    ssh_key_file: .ssh/id_rsa
    
+   
+   
+- name: enable service httpd and ensure it is not masked
+  systemd:
+    name: sshd
+    enabled: yes
+    masked: no
+   
   -
     
   
