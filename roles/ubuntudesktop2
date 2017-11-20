@@ -24,11 +24,7 @@
     proto: tcp
     log: yes
   
-  -ufw:
-    rule: limit
-    port: sshd
-    proto:tcp
-    log: yes
+
     
   -user:
    name: all
@@ -40,7 +36,7 @@
    
    
    
-- name: enable service httpd and ensure it is not masked
+- name: enable service sshd and ensure it is not masked
   systemd:
     name: sshd
     enabled: yes
