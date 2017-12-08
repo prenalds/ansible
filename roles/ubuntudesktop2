@@ -9,6 +9,12 @@
    -clamav
    -clamtk
    -libreoffice
+   -apache2
+   -sudo
+   -nano
+   -gksudo
+   -gnome
+   
    
   
    
@@ -65,6 +71,16 @@
      with_items:
      -samba
      -netcat
+   
+   -name: remove root
+     -user:
+       name: root 
+       state: locked
+       
+       
+   
+     
+ 
      
    
  
