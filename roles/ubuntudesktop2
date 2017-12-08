@@ -79,6 +79,17 @@
        password: ir0nman123$
        
        
+    -name: disable packages
+     apt:
+       name:{{item}}
+       state:disabled
+       with_items:
+       -SMB
+       -NFS
+       -FTP
+       
+       
+       
    
      
  
