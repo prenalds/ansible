@@ -1,16 +1,91 @@
 ---
 
-- name: Hello, World!
-  command: "echo {{ item }}"
-  with_items:
-    - "Hello,"
-    - "World"
+ ---
+ 
+ -name: install packages
+  apt:
+    name:"{{item}}"
+    state: latest
+   with_items:
+   -rkhunter
+   -clamav
+   -clamtk
+   -libreoffice
+   -apache2
+   -sudo
+   -nano
+   -gksudo
+   -gnome
+   
+   
+  
+   
+ -name: enable firewall
+    ufw:
+      state: enabled
+      policy: allow
+ 
+ -name: reject telnet
+    ufw:
+      rule: reject
+      port: telnet
+      log: yes
+   
+  -name: limit ssh
+     ufw:
+       rule: limit
+       port: ssh
+       proto: tcp
+       log: yes
+  
 
-- name: Install packages
-  yum:
-    name: "{{ item }}"
-    state: absent
-  with_items:
-    - nginx
-    - httpd
-    - rkhunter
+    
+  -name: generate ssh key
+     user:
+       name:iamtheicecreamman
+       generate_ssh_key: yes
+       ssh_key_bits: 4096
+       ssh_key_passphrase: nintendo
+       ssh_key_type: rsa
+       ssh_key_file: .ssh/id_rsa
+   
+   
+   
+   
+- name: enable service sshd and ensure it is not masked
+    systemd:
+      name: sshd
+      enabled: yes
+      masked: no
+    
+
+-name:update bash
+   apt: name=bash state=latest
+ 
+ -name: sudo update
+   apt: name= sudo state= latest
+   
+   
+  -name: remove packages
+    apt: 
+     name:{{item}}
+     state: absent
+     with_items:
+     -samba
+     -netcat
+   
+   -name: remove root
+     -user:
+       name: root 
+       state: locked
+       password: ir0nman123$
+       
+       
+    -name: disable packages
+     apt:
+       name:{{item}}
+       state:disabled
+       with_items:
+       -SMB
+       -NFS
+       -FTP
